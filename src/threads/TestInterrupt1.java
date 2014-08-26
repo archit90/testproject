@@ -10,6 +10,7 @@ package threads;
  * No exception is thrown in z1 thread as it was not sleeping at the time <br/>
  * otherwise InterruptedException would have been thrown <br/>
  */
+
 public class TestInterrupt1 {
   public static void main(String[] args) {
     Z z1 = new Z();

@@ -6,6 +6,7 @@ package threads;
  * <p/>
  * Thread.currentThread() returns the instance of currently running thread
  */
+
 public class ThreadUtil {
   public static void sleep(long milli) {
     try {
