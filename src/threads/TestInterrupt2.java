@@ -6,19 +6,20 @@ package threads;
  * Reason for above: cannot modify a running thread (here main) from user to daemon <br/>
  * <p/>
  * 2. From user thread we can start child user or daemon threads <br/>
- * if user thread throws exception while running, all its <br/>
- * - child daemon threads will stop running, <br/>
+ * if the user thread ends or throws exception while running, all its <br/>
+ * - child daemon threads will stop running (terminate immediately), <br/>
  * - child user threads will keep running <br/>
+ * <p/>
  */
 
 public class TestInterrupt2 {
   public static void main(String[] args) throws Exception {
     Th1 t1 = new Th1();
-    t1.setDaemon(true);
+    //t1.setDaemon(true);
     t1.start();
     ThreadUtil.sleep(1000);
     boolean a = true;
-    if (a)
+    if (!a)
       throw new Exception("Yikes!");
     t1.interrupt();
     System.out.println("Done main");
