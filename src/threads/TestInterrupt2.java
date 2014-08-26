@@ -10,6 +10,12 @@ package threads;
  * - child daemon threads will stop running (terminate immediately), <br/>
  * - child user threads will keep running <br/>
  * <p/>
+ * Calling Thread.interrupt() is a way to tell the thread to stop what it is doing. <br/>
+ * If the thread is in a <b>blocking call</b>, the blocking call will throw an <b>InterruptedException</b>, <br/>
+ * otherwise the interrupted flag of the thread will be set. <br/>
+ * <p/>
+ * A Thread or a Runnable that is interruptable should check from time to time <br/>
+ * Thread.currentThread().isInterrupted(). If it returns true, cleanup and return <br/>
  */
 
 public class TestInterrupt2 {
