@@ -10,17 +10,6 @@ package threads;
  * No exception is thrown in z1 thread as it was not sleeping at the time <br/>
  * otherwise InterruptedException would have been thrown <br/>
  */
-
-/**
- * A simple test for Thread interrupt <br/>
- * Note: interrupt() is a member function in Thread class unlike sleep() <br/>
- * A thread can be interrupted any number of times <br/>
- * <p/>
- * ThreadUtil.sleep() sleeps the main thread as it is called in main <br/>
- * z1.interrupt() interrupts the thread z1. <br/>
- * No exception is thrown in z1 thread as it was not sleeping at the time <br/>
- * otherwise InterruptedException would have been thrown <br/>
- */
 public class TestInterrupt1 {
   public static void main(String[] args) {
     Z z1 = new Z();

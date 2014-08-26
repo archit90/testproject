@@ -6,13 +6,6 @@ package threads;
  * <p/>
  * Thread.currentThread() returns the instance of currently running thread
  */
-
-/**
- * A small class having a static method sleep to put the current thread
- * to sleep for specified time in milliseconds
- * <p/>
- * Thread.currentThread() returns the instance of currently running thread
- */
 public class ThreadUtil {
   public static void sleep(long milli) {
     try {
