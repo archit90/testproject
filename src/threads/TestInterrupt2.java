@@ -33,6 +33,7 @@ class Th1 extends Thread {
     try {
       sleep(5000);
     } catch (InterruptedException e) {
+      System.out.println(getName() + " interrupted");
       e.printStackTrace();
     }
 
