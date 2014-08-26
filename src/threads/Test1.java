@@ -1,4 +1,4 @@
-package test;
+package threads;
 
 /**
  * Created by archit on 25/8/14.
