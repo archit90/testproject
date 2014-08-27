@@ -13,15 +13,15 @@ package synchronization;
  */
 public class TestSync1 {
   public static void main(String[] args) {
-    A a1 = new A();
-    B b1 = new B(a1);
-    C c1 = new C(a1);
+    AA a1 = new AA();
+    BB b1 = new BB(a1);
+    CC c1 = new CC(a1);
     b1.start();
     c1.start();
   }
 }
 
-class A {
+class AA {
   synchronized void test1() {
     for (int i = 0; i < 100; i++) {
       System.out.println("test1: " + i);
@@ -35,26 +35,26 @@ class A {
   }
 }
 
-class B extends Thread {
-  A a;
+class BB extends Thread {
+  AA AA;
 
-  B(A a) {
-    this.a = a;
+  BB(AA AA) {
+    this.AA = AA;
   }
 
   public void run() {
-    a.test1();
+    AA.test1();
   }
 }
 
-class C extends Thread {
-  A a;
+class CC extends Thread {
+  AA AA;
 
-  C(A a) {
-    this.a = a;
+  CC(AA AA) {
+    this.AA = AA;
   }
 
   public void run() {
-    a.test2();
+    AA.test2();
   }
 }
