@@ -27,6 +27,9 @@ package synchronization;
  * users of a shared resource up to a maximum number. <br/>
  * Threads can request access to the resource (decrementing the semaphore), <br/>
  * and can signal that they have finished using the resource (incrementing the semaphore)." <br/>
+ * <p/>
+ * <b>Mutex is a general concept of restricting access of a shared resource.</b> <br/>
+ * Semaphore is a kind of mutex <br/>
  */
 public class TestMutex1 {
   public static void main(String[] args) {
@@ -34,22 +37,18 @@ public class TestMutex1 {
   }
 
   public static void main2(String[] args) {
-    final C1 c1 = new C1();
+    C1 c1 = new C1();
     final int COUNT = 4;
-    Thread[] ts = new Thread[COUNT];
+    MTh[] ts = new MTh[COUNT];
     for (int i = 0; i < COUNT; i++) {
-      ts[i] = new Thread() {
-        public void run() {
-          c1.test1();
-        }
-      };
+      ts[i] = new MTh(c1);
     }
     for (int i = 0; i < COUNT; i++) {
-      System.out.println(ts[i].getName());
+      System.out.println("Started: "+ts[i].getName());
       ts[i].start();
     }
     try {
-      Thread.sleep(3000);
+      Thread.sleep(7000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
@@ -73,7 +72,18 @@ public class TestMutex1 {
     c1.test2();
   }
 }
+class MTh extends Thread{
+  C1 c;
+  public MTh(C1 c){
+    this.c=c;
+  }
+  public void run(){
+    System.out.println(Thread.currentThread().getName()+": entered run()");
+    c.test1();
+    System.out.println(Thread.currentThread().getName()+": exiting run()");
+  }
 
+}
 class C1 {
   void test1() {
     System.out.println(Thread.currentThread().getName() + ": Entered test1");
