@@ -11,6 +11,7 @@ package synchronization;
  * no other thread can access the any synchronized methods of A <br/>
  * al long as the synchronized method of A finishes <br/>
  */
+
 public class TestSync1 {
   public static void main(String[] args) {
     AA a1 = new AA();

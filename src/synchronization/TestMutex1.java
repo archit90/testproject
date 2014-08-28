@@ -49,8 +49,8 @@ package synchronization;
  * you need to ask yourself whether you actually need 5 people in one room <br/>
  * and it would not just be easier with one person in the room on their own doing all the work. <br/>
  * Actually, this is just extending the analogy, but you get the idea. <br/>
-
  */
+
 public class TestMutex1 {
   public static void main(String[] args) {
     main2(args);
@@ -64,7 +64,7 @@ public class TestMutex1 {
       ts[i] = new MTh(c1);
     }
     for (int i = 0; i < COUNT; i++) {
-      System.out.println("Started: "+ts[i].getName());
+      System.out.println("Started: " + ts[i].getName());
       ts[i].start();
     }
     try {
@@ -92,18 +92,22 @@ public class TestMutex1 {
     c1.test2();
   }
 }
-class MTh extends Thread{
+
+class MTh extends Thread {
   C1 c;
-  public MTh(C1 c){
-    this.c=c;
+
+  public MTh(C1 c) {
+    this.c = c;
   }
-  public void run(){
-    System.out.println(Thread.currentThread().getName()+": entered run()");
+
+  public void run() {
+    System.out.println(Thread.currentThread().getName() + ": entered run()");
     c.test1();
-    System.out.println(Thread.currentThread().getName()+": exiting run()");
+    System.out.println(Thread.currentThread().getName() + ": exiting run()");
   }
 
 }
+
 class C1 {
   void test1() {
     System.out.println(Thread.currentThread().getName() + ": Entered test1");

@@ -13,6 +13,7 @@ import java.lang.management.ThreadMXBean;
  * <p/>
  * A deadlock happens
  */
+
 public class TestDeadlock1 {
   public static void main(String[] args) {
     Shared s1 = new Shared(), s2 = new Shared();

@@ -41,14 +41,14 @@ public class TestWaitNotify1 {
   }
 
   public static void main3(String[] args) {
-    final TA a1=new TA();
-    Thread t1=new Thread(){
-      public void run(){
+    final TA a1 = new TA();
+    Thread t1 = new Thread() {
+      public void run() {
         a1.test1();
       }
     };
-    Thread t2=new Thread(){
-      public void run(){
+    Thread t2 = new Thread() {
+      public void run() {
         a1.test1();
       }
     };
