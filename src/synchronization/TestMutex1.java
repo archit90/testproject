@@ -1,7 +1,7 @@
 package synchronization;
 
 /**
- * A very simple explanation of mutex and semaphore <br/>
+ * A very simple analogy for mutex and semaphore <br/>
  * <p/>
  * <b>Mutex:</b> <br/>
  * It is like a key to a toilet. One person can have the key - occupy the toilet - at the time. <br/>
@@ -30,6 +30,26 @@ package synchronization;
  * <p/>
  * <b>Mutex is a general concept of restricting access of a shared resource.</b> <br/>
  * Semaphore is a kind of mutex <br/>
+ * <p/>
+ * A very good explanation of Mutex by analogy <br/>
+ * <p/>
+ * When I am having a big heated discussion at work, <br/>
+ * I use a rubber chicken which I keep in my desk for just such occasions. <br/>
+ * The person holding the chicken is the only person who is allowed to talk. <br/>
+ * If you don't hold the chicken you cannot speak. <br/>
+ * You can only indicate that you want the chicken and wait until you get it before you speak. <br/>
+ * Once you have finished speaking, you can hand the chicken back to the moderator <br/>
+ * who will hand it to the next person to speak. <br/>
+ * This ensures that people do not speak over each other, and also have their own space to talk. <br/>
+ * <p/>
+ * Replace Chicken with Mutex and person with thread and you basically have the concept of a mutex. <br/>
+ * Of course, there is no such thing as a rubber mutex. <br/>
+ * Only rubber chicken. My cats once had a rubber mouse, but they ate it. <br/>
+ * Of course, before you use the rubber chicken, <br/>
+ * you need to ask yourself whether you actually need 5 people in one room <br/>
+ * and it would not just be easier with one person in the room on their own doing all the work. <br/>
+ * Actually, this is just extending the analogy, but you get the idea. <br/>
+
  */
 public class TestMutex1 {
   public static void main(String[] args) {
