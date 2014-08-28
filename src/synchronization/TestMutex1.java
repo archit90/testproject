@@ -30,30 +30,71 @@ package synchronization;
  */
 public class TestMutex1 {
   public static void main(String[] args) {
+    main2(args);
+  }
 
+  public static void main2(String[] args) {
+    final C1 c1 = new C1();
+    final int COUNT = 4;
+    Thread[] ts = new Thread[COUNT];
+    for (int i = 0; i < COUNT; i++) {
+      ts[i] = new Thread() {
+        public void run() {
+          c1.test1();
+        }
+      };
+    }
+    for (int i = 0; i < COUNT; i++) {
+      System.out.println(ts[i].getName());
+      ts[i].start();
+    }
+    try {
+      Thread.sleep(3000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    System.out.println("About to call test2 on C1 object");
+    c1.test2();
+  }
+
+  public static void main1(String[] args) {
+    final C1 c1 = new C1();
+    Thread t1 = new Thread() {
+      public void run() {
+        c1.test1();
+      }
+    };
+    t1.start();
+    try {
+      Thread.sleep(3000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    c1.test2();
   }
 }
+
 class C1 {
-  void test1(){
-    System.out.println(Thread.currentThread().getName()+": Entered test1");
-    synchronized (this){
-      System.out.println(Thread.currentThread().getName()+": Entered test1 synchronized block");
+  void test1() {
+    System.out.println(Thread.currentThread().getName() + ": Entered test1");
+    synchronized (this) {
+      System.out.println(Thread.currentThread().getName() + ": Entered test1 synchronized block");
       try {
         wait();
-      } catch (InterruptedException e){
+      } catch (InterruptedException e) {
         e.printStackTrace();
       }
-      System.out.println(Thread.currentThread().getName()+": Exiting test1 synchronized block");
+      System.out.println(Thread.currentThread().getName() + ": Exiting test1 synchronized block");
     }
-    System.out.println(Thread.currentThread().getName()+": Exiting test1");
+    System.out.println(Thread.currentThread().getName() + ": Exiting test1");
   }
 
-  void test2(){
-    System.out.println(Thread.currentThread().getName()+": Entered test2");
-    synchronized (this){
-      System.out.println(Thread.currentThread().getName()+": test2 notifyAll");
+  void test2() {
+    System.out.println(Thread.currentThread().getName() + ": Entered test2");
+    synchronized (this) {
+      System.out.println(Thread.currentThread().getName() + ": test2 notifyAll");
       notifyAll();
     }
-    System.out.println(Thread.currentThread().getName()+": Exiting test2");
+    System.out.println(Thread.currentThread().getName() + ": Exiting test2");
   }
 }
