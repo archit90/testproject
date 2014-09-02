@@ -1,8 +1,12 @@
 package synchronization;
 
 /**
- * Note: If notify() is called needlessly IllegalMonitorStateException occurs <br/>
- * Test what happens if the run method of Thread marked synchronized
+ * Test what happens if the run method of Thread is marked synchronized <br/>
+ * Inside the synchronized run method, the thread just waits <br/>
+ * Only one thread can ever get into this run method, <br/>
+ * (probably) means only one thread can start the thread <br/>
+ * if t1.notify() is not synchronized on t1 then IllegalThreadStateException occurs for <b>some</b> reason <br/>
+ * TODO: figure out reason for this behaviour
  */
 
 public class TestThrSynchro1 {
@@ -29,7 +33,6 @@ class ThrSyn extends Thread {
     try {
       wait();
     } catch (InterruptedException e) {
-      System.out.println("Exception in " + getName());
       e.printStackTrace();
     }
     System.out.println(getName() + ": ends");

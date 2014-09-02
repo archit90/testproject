@@ -1,7 +1,7 @@
-package innerclass;
+package misctests;
 
 public class RunMain {
   public static void main(String[] args) {
-    TestInner1.main(new String[]{});
+    Man1.main(new String[]{});
   }
 }
